@@ -2,6 +2,7 @@ import { useState } from "react";
 import postUrl from "../util/index";
 import linkIcon from "../assets/link.svg";
 import clipboard from "../assets/clipboard.svg";
+// import window from "../assets/window.svg"
 
 const Form = () => {
   const [input, setInput] = useState("");
@@ -44,24 +45,20 @@ const Form = () => {
 
       {/* Display short URL and Copy Me button */}
       {shortUrl && (
-        <div className="mt-6 w-full max-w-lg text-center">
-          <p className="text-2xl mb-4">
-            Your shortened URL:{" "}
-            <a
-              href={shortUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-cyan-400 underline"
-            >
-              {shortUrl}
-            </a>
-          </p>
+        <div className="mt-6 w-full max-w-lg text-center flex justify-center gap-3">
           <button
             onClick={copyToClipboard}
             className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors"
           >
             <img className="size-8 mr-2 bg" src={clipboard}/>
             Copy url 
+          </button>
+          <button
+            onClick={()=>{window.location.href=shortUrl}}
+            className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors"
+          >
+            {/* <img className="size-8 mr-2 bg" src={window}/> */}
+            Try out
           </button>
         </div>
       )}
