@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const RedirectComponent = () => {
+const Redirect = () => {
   const [url, setUrl] = useState("");
 
   const { token } = useParams();
@@ -42,4 +42,4 @@ const RedirectComponent = () => {
   );
 };
 
-export default RedirectComponent;
+export default Redirect;
