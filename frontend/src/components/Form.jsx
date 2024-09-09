@@ -1,23 +1,24 @@
 import { useState } from "react";
+import postUrl from "../util/index";
 import linkIcon from "../assets/link.svg";
 
 const Form = () => {
   const [input, setInput] = useState("");
-  const [shortUrl, setShortUrl] = useState(""); // Assume you'll set this after shortening
+  const [shortUrl, setShortUrl] = useState("");
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    // Add your URL shortening logic here and update `setShortUrl`
-    setShortUrl("https://short.ly/example"); // Example short URL
+    const res = await postUrl(input.trim().toLowerCase());
+    setShortUrl(res);
   };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shortUrl);
-    alert("Copied to clipboard!");
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
+      <h1>{shortUrl}</h1>
       <h1 className="text-4xl font-bold mb-6 text-center text-cyan-400">
         Shorten Your Long URLs Instantly!
       </h1>
@@ -68,4 +69,3 @@ const Form = () => {
 };
 
 export default Form;
-
