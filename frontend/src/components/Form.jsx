@@ -3,15 +3,19 @@ import postUrl from "../util/index";
 import linkIcon from "../assets/link.svg";
 import clipboard from "../assets/clipboard.svg";
 import webwindow from "../assets/webwindow.svg"
+import loader from "../assets/loader.svg"
 
 const Form = () => {
   const [input, setInput] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+  const [isLoading,setIsLoading]=useState(false)
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     const res = await postUrl(input.trim().toLowerCase());
     setShortUrl(res);
+    setIsLoading(false)
   };
 
   const copyToClipboard = () => {
@@ -43,19 +47,24 @@ const Form = () => {
         </button>
       </form>
 
+      {isLoading&&(
+      <div className=" p-6 mt-6">
+          <img className="size-10 animate-spin" src={loader}/>
+        </div>
+      )}
       {/* Display short URL and Copy Me button */}
       {shortUrl && (
-        <div className="mt-6 w-full max-w-lg text-center flex justify-center gap-3">
+        <div className="p-6 w-full max-w-lg text-center flex justify-center gap-3">
           <button
             onClick={copyToClipboard}
-            className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors"
+            className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 scale-up-center"
           >
             <img className="size-8 mr-2 bg" src={clipboard}/>
             Copy url 
           </button>
           <button
             onClick={()=>{window.location.href=shortUrl}}
-            className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors"
+            className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors scale-up-center"
           >
             <img className="size-8 mr-2 bg" src={webwindow}/>
             Try out

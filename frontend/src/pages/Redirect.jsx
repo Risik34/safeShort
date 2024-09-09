@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import loader from "../assets/loader.svg"
 
 const Redirect = () => {
   const [url, setUrl] = useState("");
@@ -21,7 +22,7 @@ const Redirect = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-900">
       {url ? (
-        <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+        <div className="bg-gray-800 p-40 rounded-lg shadow-lg text-center scale-up-center ">
           <h2 className="text-lg font-semibold text-cyan-400 mb-4">
             Do you want to visit this site?
           </h2>
@@ -36,7 +37,9 @@ const Redirect = () => {
           </div>
         </div>
       ):(
-      <h1 className="text-white">Loading</h1>
+     <div classname="p-6 mt-6">
+          <img classname="size-10 animate-spin" src={loader}/>
+        </div>
       )}
     </div>
   );
