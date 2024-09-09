@@ -1,6 +1,7 @@
 import { useState } from "react";
 import postUrl from "../util/index";
 import linkIcon from "../assets/link.svg";
+import clipboard from "../assets/clipboard.svg";
 
 const Form = () => {
   const [input, setInput] = useState("");
@@ -57,9 +58,10 @@ const Form = () => {
           </p>
           <button
             onClick={copyToClipboard}
-            className="px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors"
+            className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors"
           >
-            Copy Me
+            <img className="size-8 mr-2 bg" src={clipboard}/>
+            Copy url 
           </button>
         </div>
       )}
