@@ -2,7 +2,7 @@ import { useState } from "react";
 import postUrl from "../util/index";
 import linkIcon from "../assets/link.svg";
 import clipboard from "../assets/clipboard.svg";
-// import window from "../assets/window.svg"
+import webwindow from "../assets/webwindow.svg"
 
 const Form = () => {
   const [input, setInput] = useState("");
@@ -57,7 +57,7 @@ const Form = () => {
             onClick={()=>{window.location.href=shortUrl}}
             className="flex items-center px-6 py-3 bg-cyan-500 rounded-lg text-xl font-semibold hover:bg-cyan-600 transition-colors"
           >
-            {/* <img className="size-8 mr-2 bg" src={window}/> */}
+            <img className="size-8 mr-2 bg" src={webwindow}/>
             Try out
           </button>
         </div>
